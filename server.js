@@ -43,3 +43,4 @@ app.listen(PORT, () => console.log(`Server running on :${PORT}`));
 // Export app for testing (required by assignment)
 module.exports = app;
 //Code Ended 
+// Random comment: This server is running smoothly with authentication endpoints!
