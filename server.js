@@ -44,3 +44,4 @@ app.listen(PORT, () => console.log(`Server running on :${PORT}`));
 module.exports = app;
 //Code Ended 
 // Random comment: This server is running smoothly with authentication endpoints!
+// Updated to trigger GitHub Actions workflow
