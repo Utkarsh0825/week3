@@ -34,8 +34,19 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Set up environment variables
+        run: |
+          echo "MONGODB_URL=mongodb://localhost:27017/week3" >> $GITHUB_ENV
+          echo "FRONTEND_ORIGIN=http://localhost:3000" >> $GITHUB_ENV
+          echo "JWT_ACCESS_SECRET=test-access-secret-key" >> $GITHUB_ENV
+          echo "JWT_REFRESH_SECRET=test-refresh-secret-key" >> $GITHUB_ENV
+          echo "NODE_ENV=test" >> $GITHUB_ENV
+
       - name: Start app
-        run: npm start &
+        run: |
+          npm start &
+          sleep 5
+          echo "App started"
 
       - name: Run tests
         run: npm test
