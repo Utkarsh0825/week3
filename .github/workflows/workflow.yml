@@ -41,11 +41,18 @@ jobs:
           echo "JWT_ACCESS_SECRET=test-access-secret-key" >> $GITHUB_ENV
           echo "JWT_REFRESH_SECRET=test-refresh-secret-key" >> $GITHUB_ENV
           echo "NODE_ENV=test" >> $GITHUB_ENV
+          echo "PORT=8000" >> $GITHUB_ENV
+
+      - name: Wait for MongoDB
+        run: |
+          echo "Waiting for MongoDB to be ready..."
+          timeout 60 bash -c 'until mongosh --host localhost:27017 --eval "db.adminCommand(\"ping\")" --quiet; do sleep 2; done'
+          echo "MongoDB is ready!"
 
       - name: Start app
         run: |
           npm start &
-          sleep 5
+          sleep 10
           echo "App started"
 
       - name: Run tests
