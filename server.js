@@ -37,11 +37,14 @@ app.use((err, req, res, next) => {
     res.status(status).json({error: err.message || 'Server error'});
 });
 
-const PORT = process.env.PORT || 8000;
-app.listen(PORT, () => console.log(`Server running on :${PORT}`));
-
 // Export app for testing (required by assignment)
 module.exports = app;
+
+// Only start server if not in test mode and not being imported
+if (process.env.NODE_ENV !== 'test' && require.main === module) {
+  const PORT = process.env.PORT || 8000;
+  app.listen(PORT, () => console.log(`Server running on :${PORT}`));
+}
 //Code Ended 
 // Random comment: This server is running smoothly with authentication endpoints!
 // Updated to trigger GitHub Actions workflow
