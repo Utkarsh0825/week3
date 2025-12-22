@@ -45,3 +45,4 @@ module.exports = app;
 //Code Ended 
 // Random comment: This server is running smoothly with authentication endpoints!
 // Updated to trigger GitHub Actions workflow
+// lab 6 trigger
