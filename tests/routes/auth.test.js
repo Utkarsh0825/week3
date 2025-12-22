@@ -8,8 +8,16 @@
 
 const request = require('supertest');
 const app = require('../../server');
+const mongoose = require('mongoose');
 
 describe('POST /api/auth/signup', () => {
+  
+  afterAll(async () => {
+    // Close MongoDB connection after all tests
+    if (mongoose.connection.readyState !== 0) {
+      await mongoose.connection.close();
+    }
+  });
   
   it('should create a new user with valid data', async () => {
     // Generate unique credentials to avoid conflicts with existing data

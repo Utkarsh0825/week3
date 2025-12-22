@@ -7,5 +7,8 @@ module.exports = {
   ],
   coverageDirectory: 'coverage',
   verbose: true,
+  globalTeardown: '<rootDir>/tests/teardown.js',
 };
+
+
 
